@@ -19,7 +19,6 @@ Ngnix:-
 	        3. Partial Requests
 
                1. Partial request is like if we are asking for big files then only some bytes of the requested files is being sent to the client.
-         
 			      Example:- Vedio streaming a particular vedio file.
 
                2. A Partial request will only be applicable for the HTTP/1.1, It will not be applicable after this version of HTTP.
@@ -31,7 +30,6 @@ Ngnix:-
 	    2. - POST Method
 
         3. - HEAD Method
-
               The HTTP HEAD method requests the headers that would be returned if the HEAD request's URL was instead requested with the HTTP
 			  GET method. For example, if a URL might produce a large download, a HEAD request could read its Content-Length header to check
 			  the filesize without actually downloading the file.  		
@@ -47,40 +45,65 @@ Ngnix:-
 
     2. HTTP Status Codes
 
-        1. 100 - 199 :[INFORMATION STATUS CODES]
-        2. 200 - 299 :[SUCCESS STATUS CODES]
+        1. 200 - 299 :[SUCCESS STATUS CODES]
+		2. 100 - 199 :[INFORMATION STATUS CODES]
         3. 300 - 399 :[REDIRECTION STATUS CODES]
         4. 400 - 499 :[CLIENT ERROR STATUS CODES]
         5. 500 - 599 :[SERVER ERROR STATUS CODES]	
 
 
-  C. REVERSE PROXY
-
-        1. It hides the existence of the origin backend servers.
-        2. Can protect the server from the web-based attacks, DOS.
-        3. Can provide great Caching functionality.
-		4. Can optimize content by Compressing it.
-		5. Can act as an SSL Terminating Proxy.
-		6. Request Routing
+   C. The Caching Subsytem
+     
+	  1. Cache-Control (HTTP HEADER):-
 		
-		
-  D. Proxy Pass DIRECTIVE(PPD)
-       
-        1. PPD forwards the request to the proxied servers along with the directive.	   
+		   1. no-store
+		   2. must-revalidate
+		   3. max-age=0 (FOR BOTH BROWSER & INTERMEDIARY PROXY SERVER)
+		   4. s-maxage=0 (SPECIFICALLY FOR THE INTERMEDIARY PROXY SERVER).
+		   5. no-cache (DATA CAN CACHED AT ANY LEVEL IN BETWEEN THE CLIENT & SERVER)
+           6. Pragma: no-cache (Specifically for HTTP1.0 Apps or Connection, For Backward Compatability)
 
-			location / {
-			    proxy_pass <Ip_Address>;
-			}
-			  
-		2. X-REAL-IP 
+          Note:- s-maxage has higer priority then max-age header.  		   
+		  
+	  2. no-cache vs must-revalidate
 
-            1. Example :- 
-         	    location / {
-			       proxy_pass <Ip_Address>;
-				   proxy_set_header X-REAL-IP $remote_addr;
-			    }	
-			
-			2. "proxy_set_header X-REAL-IP $remote_addr;" Config adds the actual Ip, where the request was genrated, and that is forwarded to the to actual AppServer, With a 
-			    REQUEST HEADER (X-REAL-IP).
+            	      
+      3. IF-MODIFIED-SINCE (HTTP HEADER)
+
+      4. DATE AND EXPIRES (HTTP HEADER)   
+
+         Note:- 
+		        1. EXPIRES Header specifically for HTTP:- 1.0.
+				2. The above headers are added in the response.
+      
+	  5. Keep Alive 
+	    
+		 Note:- 
+		        1. Header is first set by the client, then following it server also set the Keep Alive connection in response.
+				2. It was introduced in the HTTP:- 1.0 Protocol, However it is mandatory in HTTP: 1.1 for the persistent connection.
 				
-			3. This is usefull when there is session management based on the client Ip Address.	
+	
+      6. Expires 
+	  
+	     Example:- 
+					1. / \.(etc.png) {
+				       expirers 24hr;     :- This adds the response headers the with the following headers:-  {expires: 24hr; Cache-Control: 36000 * 60 * 24 }         
+				    }  
+                  
+                    2. / \.(etc.png) {
+					   expirers -1;       :- This adds the response headers the with the following headers:-  {expires: 24hr; Cache-Control: no-cache }     
+					} 				  
+
+          	  
+      7. Q Factor (Content-Negoitation)	  
+           1. Relative Quality Factor
+		      1. Q Parameter Scale Range([0-1]). 
+		   
+		         Example :- Accept: text/html, application/xhtml+xml, application/xml;q=0.9, */*;q=0.8
+		   
+		
+		
+      8. Max-Age vs S-Max-Age
+	  
+	       1. Max-Age is basically for the private server.
+		   2. S-Max-Age is basically for the public server.
