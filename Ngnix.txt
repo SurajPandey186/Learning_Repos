@@ -80,19 +80,20 @@ Ngnix:-
 	    
 		 Note:- 
 		        1. Header is first set by the client, then following it server also set the Keep Alive connection in response.
-				2. It was introduced in the HTTP:- 1.0 Protocol, However it is mandatory in HTTP: 1.1 for the persistent connection.
+			2. It was introduced in the HTTP:- 1.0 Protocol, However it is mandatory in HTTP: 1.1 for the persistent connection.
 				
 	
       6. Expires 
 	  
 	     Example:- 
-					1. / \.(etc.png) {
-				       expirers 24hr;     :- This adds the response headers the with the following headers:-  {expires: 24hr; Cache-Control: 36000 * 60 * 24 }         
-				    }  
+		   
+		   1. / \.(etc.png) {
+				 expirers 24hr;     :- This adds the response headers the with the following headers:-  {expires: 24hr; Cache-Control: 36000 * 60 * 24 }         
+		      }  
                   
                     2. / \.(etc.png) {
-					   expirers -1;       :- This adds the response headers the with the following headers:-  {expires: 24hr; Cache-Control: no-cache }     
-					} 				  
+			          expirers -1;       :- This adds the response headers the with the following headers:-  {expires: 24hr; Cache-Control: no-cache }     
+		      } 				  
 
           	  
       7. Q Factor (Content-Negoitation)	  
