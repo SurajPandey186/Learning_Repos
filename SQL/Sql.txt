@@ -1,0 +1,14 @@
+1. Logical Execution Order Of SELECT Clauses
+   Writing order         Execution Order
+   A. SELECT             FROM
+   B. FROM               WHERE
+   C. WHERE              GROUP BY
+   D. GROUP BY           HAVING
+   E. HAVING             SELECT
+   6. ORDER BY           ORDER BY
+
+2. All expressions in phases executed after GROUP BY
+   (i.e, HAVING, SELECT, ORDER BY) must guarantee
+   to return a single value (scalar) per group.
+
+   
