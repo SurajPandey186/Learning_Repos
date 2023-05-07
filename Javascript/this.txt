@@ -1,0 +1,28 @@
+POINT 1:- 
+
+when we use strict mode, this holds the value of undefined in global functions
+and in anonymous functions that are not bound to any object.
+
+SNIPET - 1
+
+"use strict";
+var firstName = "Peter", lastName = "Ally";
+function showFullName() {
+  console.log(this.firstName+" "+this.lastName);
+};
+
+var person = {
+   firstName   :"Penelope",
+   lastName    :"Barrymore",
+   showFullName:function () {
+     console.log (this.firstName + " " + this.lastName);
+   }
+};
+showFullName();
+window.showFullName();
+
+
+O/P - 1
+Uncaught TypeError: Cannot read properties of undefined (reading 'firstName')
+ 
+

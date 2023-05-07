@@ -1,0 +1,50 @@
+1. A container orchestration tool.
+
+2. Components of Kubernetes
+    1. Pod
+    2. Service
+    3. Configmap
+    4. Secret 
+ 
+3. Process needs to installed on Worker Nodes :-
+    1. kubelet
+    2. kube-proxy
+
+4. Master server have following 4 process :-
+    1. Api Server 
+       Gateway for the cluster
+
+    2. Scheduler
+       A process that helps in scheduling a new pod.
+
+    3. Controller manager
+       A process that detects the changes in the state of the cluster
+       and try to recover to the stable state asap.
+
+       For example: When ever a pod dies in the worker node, it detects
+       that and try to recover died pod asap.  
+
+    4. etcd 
+       The brain of the cluster. Contains complete cluster state information.
+
+5. Master processes, like worker process can also be many in a cluster, then in   that
+   case those multiple masters are load balanced.
+
+6. Master process use less resource beacuse of less load of the work, then compare to worker processs.
+
+7. Kubectl is a client for communicating with K8s Cluster.
+
+8. Deployment component is an abstraction over the pod in the Cluster.   
+
+9. TargetPort of service should always match with ContainersPort of Deployment.
+
+10. T	o describe any component in k8s Cluster, then run the following command :- 
+    kubectl describe <COMPONENT> <COMPONENT_NAME>;
+
+11. To get the details of the pod with including ip
+     kubectl get pod -o wide
+
+12. A service can be made external service with the following uses:- 
+    1. Add type: LoadBalancer
+    2. Adding node port like nodePort: 300000 [30000-32000]
+    
