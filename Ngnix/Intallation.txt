@@ -1,0 +1,12 @@
+1. Download the latest zip
+2. Open the active directory & run the following command:-
+   
+   start nginx.exe
+
+3. Open the browser & run the http://localhost/
+4. Here are some basic commands you can use to manage Nginx:
+
+     To stop Nginx, use the command `nginx -s stop`.
+     To quit Nginx gracefully, use `nginx -s quit`.
+     To reload the Nginx configuration file, use `nginx -s reload`.
+     To reopen the Nginx log files, use `nginx -s reopen`.
