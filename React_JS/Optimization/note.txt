@@ -1,0 +1,20 @@
+Following are some of optimization techniques:-
+
+1. Memoization techniques:- 
+
+   1.A: React.memo
+   1.B: React.useMemo
+   1.C: React.useCallback
+   
+2. Try to use your leaf level children or child components as much as memoised,
+   but only if your child do not need frequent updates, if it is un-necessarily 
+   rendering then first check is there an effect that is causing it, if this not
+   and it is being due to some parent changes then go head and use it.
+
+3. Stop Excess Reconciliations
+   1. Passing down unnecessary props
+      <Component {...rest} />
+   2. Object literal defined in render 
+      <Component style={{margin: 0}} />
+   3. Anonymouns functions defined in render
+      <Component onChange={()=> this.onChange()} />          

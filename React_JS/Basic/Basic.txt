@@ -1,0 +1,6 @@
+
+                           RECONCILIATION
+The process of finding the minimum number of changes that must be made
+in order to make the virtual dom tree and the actual dom tree identical.
+
+                       Keys plays pivotal role
