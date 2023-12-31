@@ -2,9 +2,9 @@ Following are some of optimization techniques:-
 
 1. Memoization techniques:- 
 
-   1.A: React.memo
-   1.B: React.useMemo
-   1.C: React.useCallback
+   1. React.memo
+   2. React.useMemo
+   3. React.useCallback
    
 2. Try to use your leaf level children or child components as much as memoised,
    but only if your child do not need frequent updates, if it is un-necessarily 
@@ -17,4 +17,8 @@ Following are some of optimization techniques:-
    2. Object literal defined in render 
       <Component style={{margin: 0}} />
    3. Anonymouns functions defined in render
-      <Component onChange={()=> this.onChange()} />          
+      <Component onChange={()=> this.onChange()} />
+
+4. New Hooks
+   1. useTransition
+   2. useDeferredValue
