@@ -1,0 +1,33 @@
+
+/* SINGLETON DESIGN PATTERN */ 
+
+var isEqual = function(ob1, ob2) {
+  return ob1 === ob2;
+}
+
+var Singleton = (function(){
+  var pManager;
+
+  function ProcessManager() { 
+     this.process = 0;
+  }
+
+  function createProcessManager()
+  {
+    pManager = new ProcessManager();
+    return pManager;
+  }
+
+  return {
+      getProcessManager: function () {
+        if(!pManager)
+          pManager = createProcessManager();
+        return pManager;
+      }
+  }
+})();
+
+var singleTon1 = Singleton.getProcessManager();
+var singleTon2 = Singleton.getProcessManager();
+
+console.log(isEqual(singleTon1, singleTon2));

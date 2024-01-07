@@ -1,0 +1,46 @@
+POINTS TO REMEBER 
+
+1. Factory Method Design Pattern comes under the creational design pattern.
+
+2. Factory method design pattern encapsulates the object creation by letting 
+   subclasses to decide what objects to create.
+
+3. Example
+
+/* FACTORY PATTERN */
+
+var employeesDatabase = [];
+
+var printEmployee = function () {
+  console.log('My name is '+ this.name+' and I am '+this.type);
+}
+
+var DeveloperConstructor = function (id, name, type) {
+   this.id = id;
+   this.name = name;
+   this.type = 'Developer';
+}
+
+var TesterConstructor = function (id, name, type) {
+   this.id = id;
+   this.name = name;
+   this.type = 'Tester';
+}
+
+var EmployeeFactory = function () {
+  this.create = function (id, name, type) {
+     switch(type) {
+       case 'Tester': return new TesterConstructor(id, name, type);
+       case 'Developer': return new DeveloperConstructor(id, name, type);
+     }
+  }
+}
+
+var fObject = new EmployeeFactory();
+employeesDatabase.push(fObject.create('1', 'Uma', 'Tester'));
+employeesDatabase.push(fObject.create('1', 'Suraj', 'Developer'));
+
+employeesDatabase.forEach(function(emp) {
+  printEmployee.call(emp);
+});
+

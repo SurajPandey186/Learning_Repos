@@ -1,0 +1,7 @@
+           DESIGN PATTERNS IN JAVASCRIPT
+There are three types of design patterns that are as follows:-
+
+        1. STRUCTURAL PATTERNS
+        2. CREATIONAL PATTERNS
+        3. BEHAVIOURAL PATTERNS
+        

@@ -1,0 +1,16 @@
+SOLID PRINCIPLES
+
+The SOLID principles are a subset of the principles of object-oriented design, 
+which are intended to improve the development process of object-oriented software.
+
+The acronym “SOLID” stands for the following five principles:
+
+  1. Single responsibility principle: Each class should have only one responsibility.
+
+  2. Open-closed-principle: Software units should be expandable without having to change their behavior.
+
+  3. Liskov substitution principle: A derived class should always be used instead of its base class.
+
+  4. Interface segregation principle: Interfaces should be perfectly adapted to the requirements of the accessing clients.
+
+  5. Dependency inversion principle: Classes on a higher level of abstraction should never depend on classes on a lower level of abstraction.
